@@ -1,15 +1,3 @@
-variable "aws_profile" {
-  description = "The AWS CLI profile."
-  type        = string
-  default     = "default"
-}
-
-variable "aws_region" {
-  description = "The AWS region."
-  type        = string
-  default     = "eu-central-1"
-}
-
 variable "prefix" {
   description = "The common prefix for names."
   type        = string
