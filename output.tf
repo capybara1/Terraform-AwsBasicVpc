@@ -3,12 +3,12 @@ output "vpc_id" {
   value = aws_vpc.default.id
 }
 
-output "public_subnet_ids" {
+output "public_subnets" {
   description = "The ids of the created public subnets"
-  value       = aws_subnet.public[*].id
+  value       = [for i in range(var.number_of_public_subnets) : { id = aws_subnet.public[i].id, availability_zone_id = data.aws_availability_zones.available.zone_ids[i] }]
 }
 
-output "private_subnet_ids" {
+output "private_subnets" {
   description = "The ids of the created private subnets"
-  value       = aws_subnet.private[*].id
+  value       = [for i in range(var.number_of_private_subnets) : { id = aws_subnet.private[i].id, availability_zone_id = data.aws_availability_zones.available.zone_ids[i] }]
 }
