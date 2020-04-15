@@ -1,10 +1,3 @@
-terraform {
-  required_providers {
-    aws = ">= 2.7.0"
-  }
-}
-
-
 locals {
   subnet_newbits             = ceil(log(var.max_number_of_subnets, 2))
   public_subnet_cidr_blocks  = [for i in range(var.number_of_public_subnets) : cidrsubnet(var.vpc_cidr_block, local.subnet_newbits, i)]
