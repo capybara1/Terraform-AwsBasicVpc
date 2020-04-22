@@ -25,6 +25,7 @@ resource "aws_subnet" "public" {
   map_public_ip_on_launch = true
   tags = {
     Name = "${var.prefix}-Public-${count.index + 1}"
+    Tier = "public"
   }
 }
 
@@ -56,6 +57,7 @@ resource "aws_subnet" "private" {
   cidr_block           = local.private_subnet_cidr_blocks[count.index]
   tags = {
     Name = "${var.prefix}-Private-${count.index + 1}"
+    Tier = "private"
   }
 }
 
